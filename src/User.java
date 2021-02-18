@@ -20,6 +20,9 @@ public class User {
         return age;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public int maxNameLength(User u1, User u2){
         Integer ii = u1.getName().length();
@@ -29,6 +32,14 @@ public class User {
     public static int maxAge(User u1, User u2){
         Integer ii = u1.getAge();
         return ii.compareTo(u2.getAge());
+    }
+
+    public static int maxAgeList(List<User> list){
+        int userMaxAge = list
+                .stream()
+                .mapToInt(x -> x.getAge())
+                .max().getAsInt();
+        return userMaxAge;
     }
 
     public User maxUserAge (List<User> list){
