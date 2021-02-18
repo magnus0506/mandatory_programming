@@ -1,4 +1,5 @@
-import java.util.List;
+import java.util.*;
+import java.util.stream.IntStream;
 
 public class User {
     private static int age1;
@@ -33,13 +34,16 @@ public class User {
     }
 
     public User maxUserAge (List<User> list){
-        User user = list.stream().max((a,b) -> User.maxAge(a,b)).get();
-        return user;
+        return list.stream().max(User::maxAge).get();
     }
 
-    public static List<User> totalAge (List<User> list){
-        int age = 0;
-        list.forEach((a, b) -> list.get(a.getAge()) + list.get(b).getAge());
+    public static int userAgeSum(Map<String, Integer> users){
+
+        return users
+                .values()
+                .stream()
+                .mapToInt(x -> x.intValue()).sum();
+
     }
 
     public User() {

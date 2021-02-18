@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,9 +28,12 @@ User userClass = new User();
     @Test
     void printLambda() {
         ArrayList<String> stringArrayList = new ArrayList<>();
-        stringArrayList.add("String 1");
-        stringArrayList.add("String 2");
-        stringArrayList.add("String 3");
+
+        String string1 = "1";
+        String string2 = "2";
+        String string3 = "3";
+
+        Collections.addAll(stringArrayList,string1,string2,string3);
 
         assertEquals(stringArrayList, Calculate.printLambda(stringArrayList));
     }
@@ -56,10 +58,23 @@ User userClass = new User();
         User user1 = new User("Magnus", 23);
         User user2 = new User("Jean", 25);
         User user3 = new User("Adam", 30);
-        userList.add(user1);
-        userList.add(user2);
-        userList.add(user3);
+        
+        Collections.addAll(userList,user1,user2,user3);
         assertEquals(user3, userClass.maxUserAge(userList));
+
+    }
+
+    @Test
+    public void userAgeSum(){
+        User user1 = new User("Magnus", 23);
+        User user2 = new User("Adam", 23);
+        Map<String,Integer> users = new HashMap<>();
+        users.put(user1.getName(),user1.getAge());
+        users.put(user2.getName(),user2.getAge());
+
+        int sum = 46;
+        assertEquals(sum,User.userAgeSum(users));
+        System.out.println(sum);
 
     }
 }
