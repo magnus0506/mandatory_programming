@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -9,7 +10,10 @@ class TestClass {
 
 Calculate calculate = new Calculate();
 User userClass = new User();
+@AfterEach
+void print(){
 
+}
 
     @Test
     void calc() {
@@ -67,13 +71,12 @@ User userClass = new User();
     @Test
     public void userAgeSum(){
         User user1 = new User("Magnus", 23);
-        User user2 = new User("Adam", 23);
+        User user2 = new User("Adam", 30);
         Map<String,Integer> users = new HashMap<>();
         users.put(user1.getName(),user1.getAge());
         users.put(user2.getName(),user2.getAge());
-
-        int sum = 46;
-        assertEquals(sum,User.userAgeSum(users));
+        Double sum = 26.5;
+        assertEquals(sum,User.userAgeAvg(users));
         System.out.println(sum);
 
     }

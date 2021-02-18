@@ -2,9 +2,10 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 public class User {
-    private static int age1;
     private String name;
     private int age;
+
+    public User() {}
 
     public User(String name, int age) {
         this.name = name;
@@ -19,9 +20,6 @@ public class User {
         return age;
     }
 
-    public static int getAgeStatic() {
-        return age1;
-    }
 
     public int maxNameLength(User u1, User u2){
         Integer ii = u1.getName().length();
@@ -37,16 +35,12 @@ public class User {
         return list.stream().max(User::maxAge).get();
     }
 
-    public static int userAgeSum(Map<String, Integer> users){
+    public static Double userAgeAvg(Map<String, Integer> users){
 
         return users
                 .values()
                 .stream()
-                .mapToInt(x -> x.intValue()).sum();
-
-    }
-
-    public User() {
+                .mapToInt(x -> x.intValue()).average().getAsDouble();
     }
 
     @Override
